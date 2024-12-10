@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PED Destrito Federal| Contatos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!--biblioteca de icon-->
+    <link rel="stylesheet" href="style-contatos.css">
+    <link rel="shortcut icon" href="imgs/favicon_io/favicon.ico" type="image/x-icon">
+    <!--fontes-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none
+        }
+
+        body {
+            font-family: "Open Sans", sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        /* Menu de Navegação */
+        #navbar {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            background-color: #04B2D9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        #navbar:hover {
+            background-color: #04B2D9;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Padding adicional para compensar o menu fixo */
+        main {
+            padding-top: 100px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo {
+            width: 100px;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        /* Menu de Navegação */
+        #nav-list {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-item a {
+            color: #fff;
+            font-weight: 500;
+            font-size: 1.1rem;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .nav-item a::before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: #00b3e6;
+            transition: width 0.4s ease;
+            border-radius: 5px;
+        }
+
+        .nav-item a:hover {
+            color: #ffca28;
+            transform: translateY(-3px);
+        }
+
+        .nav-item a:hover::before {
+            width: 100%;
+        }
+
+        /* Estilo para o item de menu dropdown */
+        .dropdown {
+            position: relative;
+            z-index: 3;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            z-index: 3;
+        }
+
+        .dropdown-menu {
+            z-index: 3;
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #f4f4f4;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            list-style: none;
+            padding: 1rem 0;
+            margin: 0;
+        }
+
+        .dropdown-menu li a {
+            z-index: 3;
+            color: #0a1d2e;
+            font-size: 1rem;
+            padding: 0.5rem 2rem;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: #00b3e6;
+            color: #fff;
+            z-index: 3;
+            transform: translateX(5px);
+        }
+
+        /* Menu móvel */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+        }
+
+        .menu-toggle .bar {
+            width: 100%;
+            height: 4px;
+            background-color: #fff;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            #nav-list {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: #04B2D9;
+                padding: 1rem;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+                visibility: hidden;
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            #nav-list.active {
+                display: flex;
+                visibility: visible;
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        /* Botões de ação */
+        .cta-button {
+            display: inline-block;
+            background-color: #F28749;
+            color: #ffffff;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            text-align: center;
+            max-width: 400px;
+            white-space: nowrap;
+        }
+
+        .cta-button:hover {
+            background-color: #F28749;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Centralização dos botões dentro de um quadrado */
+        .buttons-container-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            height: 100%;
+        }
+
+        .buttons-container {
+            background-color: #ffffff;
+            border: 2px solid #04B2D9;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            #nav-list {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .cta-button {
+                padding: 0.75rem 2rem;
+                font-size: 0.9rem;
+            }
+
+            .buttons-container {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav id="navbar">
+            <img src="imgs/PED--BRANCO.png" alt="logo" class="logo">
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul id="nav-list">
+                <li class="nav-item"><a href="#home">Início</a></li>
+                <li class="nav-item"><a href=".info-content">Proposta</a></li>
+                <li class="nav-item dropdown">
+                    <a>Unidades</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="cajazeiras.html">Águas Claras</a></li>
+                        <li><a href="pituba.html">Pituba, Itaigara e Imbuí</a></li>
+                        <li><a href="lauro.html">Lauro de Freitas</a></li>
+                        <li><a href="manaca.html">Manacá e Green School</a></li>
+                        <li><a href="globalasanorte.html">Global Asa Norte</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a href="#matricula">Matrículas</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="buttons-container-wrapper">
+            <div class="buttons-container">
+                <a href="https://wa.me/+5561990444741" target="_blank" class="cta-button">Unidade
+                    PED Manacá</a>
+                <a href="https://wa.me/+556196703718" target="_blank" class="cta-button">Unidade PED
+                    Green School</a>
+                <a href="https://wa.me/+5561990441371" target="_blank" class="cta-button">Unidade PED Global School</a>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
